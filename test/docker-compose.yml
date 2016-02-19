@@ -1,0 +1,3 @@
+test:
+  image: busybox
+  command: sleep 2
