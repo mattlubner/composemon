@@ -1,0 +1,28 @@
+{
+  "name": "composemon",
+  "version": "0.0.0",
+  "author": "Matt Lubner <matt@mattlubner.com>",
+  "description": "Watch tool for docker-compose projects; restart all containers on file changes.",
+  "homepage": "https://github.com/mattlubner/composemon",
+  "bin": {
+    "composemon": "bin/composemon.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git@github.com:mattlubner/composemon.git",
+  "keywords": [
+    "module",
+    "docker",
+    "compose",
+    "docker-compose",
+    "watch",
+    "nodemon",
+    "restart"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.8.1",
+    "yargs": "^4.1.0"
+  }
+}
