@@ -1,9 +1,24 @@
+sudo: required
+
+group: edge
+
+services:
+  - docker
+
 language: node_js
+
 node_js:
   - '5.3'
   - '4.2'
   - '0.12'
   - '0.10'
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/1.6.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
 deploy:
   provider: npm
   email: "$NPM_EMAIL"
