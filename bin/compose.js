@@ -9,22 +9,23 @@
 var argv = require( '../lib/cli' );
 var compose = require( '../lib/compose' );
 
-switch ( argv.method ) {
-  case 'rebuild':
-    compose( 'down' )
-    .then( compose.then( 'build' ) )
-    .then( compose.then( 'up' ) )
-    ;
-    break;
+function kill( code ) {
+  console.error( 'composemon: error encountered running docker-compose! (code %s)', code );
+  process.exit( code || 0 );
+}
 
-  case 'restart':
-    compose( 'up' )
-    .then( compose.then( 'restart' ) )
-    .then( compose.then( 'logs' ) )
-    ;
-    break;
+if ( argv.rebuild ) {
+  compose( 'stop', '--timeout', '0' )
+  .then( compose.then( 'rm', '--force' ) )
+  .then( compose.then( 'build' ) )
+  .then( compose.then( 'up' ) )
+  .catch( kill )
+  ;
 
-  default:
-    process.stderr.write( 'error: no compose method detected!\n' );
-    process.exit( 1 );
+} else {
+  compose( 'up', '-d' )
+  .then( compose.then( 'restart' ) )
+  .then( compose.then( 'logs' ) )
+  .catch( kill )
+  ;
 }
