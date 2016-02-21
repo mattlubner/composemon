@@ -25,6 +25,9 @@ var options = {
 if ( argv.ext ) {
   options.ext = argv.ext;
 }
+if ( argv.ignore ) {
+  options.ignore = argv.ignore;
+}
 if ( argv.verbose ) {
   options.verbose = argv.verbose;
 }
