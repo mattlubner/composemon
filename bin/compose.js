@@ -8,9 +8,11 @@
 
 var argv = require( '../lib/cli' );
 var compose = require( '../lib/compose' );
+var logger = require( '../lib/logger' );
 
 function kill( code ) {
-  console.error( 'composemon: error encountered running docker-compose! (code %s)', code );
+  logger.error( 'error encountered running docker-compose!' );
+  logger.debug( 'docker-compose exit code: %s', code );
   process.exit( code || 0 );
 }
 
