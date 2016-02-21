@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+/**
+ * Exposed Node script to spawn Nodemon process.
+ */
 
 'use strict';
 

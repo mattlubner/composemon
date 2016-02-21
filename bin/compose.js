@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+/**
+ * Node script passed to Nodemon which handles interaction with Docker-compose
+ * process.
+ */
 
 'use strict';
 
