@@ -6,9 +6,9 @@
 'use strict';
 
 var argv = require( '../lib/cli' );
+var compose = require( '../lib/compose' );
 var nodemon = require( 'nodemon' );
 var path = require( 'path' );
-var spawn = require( '../lib/spawn' );
 
 var nodemonCmd = [];
 var nodemonScript = path.resolve( path.join( __dirname, 'compose.js' ) );
@@ -32,8 +32,11 @@ function kill( code ) {
   process.exit( code || 0 );
 }
 
+nodemon.on( 'crash', kill );
 process.on( 'SIGINT', function () {
-  spawn( 'docker-compose', [ 'down' ].concat( argv._ ) )
+  compose( 'stop', '--timeout', '0' )
+  .then( compose.then( 'rm', '--force' ) )
   .then( kill )
-  .catch( kill );
+  .catch( kill )
+  ;
 } );
