@@ -1,6 +1,6 @@
 {
   "name": "composemon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Matt Lubner <matt@mattlubner.com>",
   "description": "Watch tool for docker-compose projects; restart all containers on file changes.",
   "homepage": "https://github.com/mattlubner/composemon",
