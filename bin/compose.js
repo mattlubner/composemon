@@ -12,22 +12,16 @@ var compose = require( '../lib/compose' );
 switch ( argv.method ) {
   case 'rebuild':
     compose( 'down' )
-    .then( function () {
-      return compose( 'build' );
-    } )
-    .then( function () {
-      return compose( 'up' );
-    } );
+    .then( compose.then( 'build' ) )
+    .then( compose.then( 'up' ) )
+    ;
     break;
 
   case 'restart':
     compose( 'up' )
-    .then( function () {
-      return compose( 'restart' );
-    } )
-    .then( function () {
-      return compose( 'logs' );
-    } );
+    .then( compose.then( 'restart' ) )
+    .then( compose.then( 'logs' ) )
+    ;
     break;
 
   default:
