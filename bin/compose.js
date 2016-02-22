@@ -25,9 +25,7 @@ if ( argv.rebuild ) {
   ;
 
 } else {
-  compose( 'up', '-d' )
-  .then( compose.then( 'restart' ) )
-  .then( compose.then( 'logs' ) )
+  compose( 'up', '--force-recreate' )
   .catch( kill )
   ;
 }
