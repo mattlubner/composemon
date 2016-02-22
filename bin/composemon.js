@@ -45,6 +45,9 @@ if ( argv.projectName ) {
   options.args.push( '--project-name' );
   options.args.push( argv.projectName );
 }
+if ( argv.rebuild ) {
+  options.args.push( '--rebuild' );
+}
 if ( argv.verbose ) {
   for ( var i = argv.verbose - 1; i >= 0; i-- ) {
     options.args.push( '--verbose' );
